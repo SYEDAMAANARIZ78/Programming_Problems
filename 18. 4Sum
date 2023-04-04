@@ -1,0 +1,15 @@
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        n = len(nums)
+        res = set()
+        seen = set()
+        for i in range(n):
+            for j in range(i+1,n):
+                for k in range(j+1,n):
+                    lastno = target - nums[i] - nums[j] - nums[k]
+                    if lastno in seen:
+                        arr = sorted([nums[i],nums[j],nums[k],lastno])
+                        res.add((arr[0],arr[1],arr[2],arr[3]))
+            seen.add(nums[i])
+        return res
+        
